@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080b" />
+  <meta name="description" content="OpenReel — stream a hand-picked library of open-licensed films and series for free. No subscription, no ads, no paywall." />
+  <title>OpenReel — Free open cinema, forever</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ffb35c'/%3E%3Cpath d='M25 19.5v25l21-12.5z' fill='%2307080b'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="#discover" data-view-link="discover" aria-label="OpenReel home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" role="img"><path d="M11.8 8.7v14.6L24 16z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-word">OPEN<span>REEL</span></span>
+        <span class="brand-pill">free</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <button class="nav-link is-active" type="button" data-view-link="discover">Discover</button>
+        <button class="nav-link" type="button" data-view-link="movies">Movies</button>
+        <button class="nav-link" type="button" data-view-link="series">Series</button>
+        <button class="nav-link" type="button" data-view-link="list">My List</button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button search-toggle" type="button" aria-label="Search the library" data-action="open-search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+        </button>
+        <span class="license-chip"><span class="dot"></span> 100% free</span>
+        <button class="avatar" type="button" data-view-link="list" aria-label="Open your list">OR</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="hero-poster" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-grain" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="eyebrow"><span class="eyebrow-line"></span> Featured open film</div>
+        <h1 class="hero-title" id="heroTitle">Sintel</h1>
+        <div class="hero-meta">
+          <span>2010</span><span class="meta-dot"></span>
+          <span>15 min</span><span class="meta-dot"></span>
+          <span>Fantasy · Adventure</span><span class="meta-dot"></span>
+          <span class="meta-license">CC BY 3.0</span>
+        </div>
+        <p class="hero-copy">A lone warrior crosses a frozen world to find the dragon she once raised — and discovers that some bonds outlive the ice.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" type="button" data-action="play-featured">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.8v12.4l10-6.2z" fill="currentColor" stroke="none"/></svg>
+            Play film
+          </button>
+          <button class="button button-ghost" type="button" data-action="open-featured">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.2M12 7.8v.2"/></svg>
+            More info
+          </button>
+          <button class="round-button hero-add" type="button" data-action="toggle-featured-list" aria-label="Add Sintel to my list" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5v13M5.5 12h13"/></svg>
+          </button>
+        </div>
+        <div class="hero-footnote">
+          <span class="hero-license-badge">OPEN</span>
+          <span>A Blender Foundation open movie · Streaming in 1080p</span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Featured film details">
+        <span class="hero-card-label">Now showing</span>
+        <div class="hero-card-title">Sintel</div>
+        <div class="hero-card-line"><span class="hero-card-stat">15:00</span><span class="hero-card-divider"></span><span>2010</span></div>
+        <div class="hero-card-foot">No account required</div>
+      </aside>
+
+      <div class="hero-scroll" aria-hidden="true"><span></span>Scroll to explore</div>
+    </section>
+
+    <div id="discoverView">
+      <section class="rail-section rail-continue" aria-labelledby="continueTitle" id="continueSection">
+        <div class="rail-head">
+          <div>
+            <h2 id="continueTitle">Continue watching</h2>
+            <p>Pick up right where you left off.</p>
+          </div>
+          <button class="text-button" type="button" data-action="clear-progress">Clear history</button>
+        </div>
+        <div class="rail-wrap">
+          <button class="rail-arrow rail-arrow-left" type="button" aria-label="Scroll left" data-rail="continueRail" data-dir="-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>
+          </button>
+          <div class="rail" id="continueRail" tabindex="0"></div>
+          <button class="rail-arrow rail-arrow-right" type="button" aria-label="Scroll right" data-rail="continueRail" data-dir="1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="rail-section" aria-labelledby="trendingTitle">
+        <div class="rail-head">
+          <div>
+            <h2 id="trendingTitle">Trending in open cinema</h2>
+            <p>Big worlds, bold ideas, zero paywalls.</p>
+          </div>
+          <button class="text-button" type="button" data-view-link="movies">View all films <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="rail-wrap">
+          <button class="rail-arrow rail-arrow-left" type="button" aria-label="Scroll left" data-rail="trendingRail" data-dir="-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>
+          </button>
+          <div class="rail" id="trendingRail" tabindex="0"></div>
+          <button class="rail-arrow rail-arrow-right" type="button" aria-label="Scroll right" data-rail="trendingRail" data-dir="1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="spotlight" aria-labelledby="spotlightTitle">
+        <div class="spotlight-art" aria-hidden="true"></div>
+        <div class="spotlight-copy">
+          <span class="eyebrow"><span class="eyebrow-line"></span> Curated collection</span>
+          <h2 id="spotlightTitle">The Blender<br /><em>open movie</em> collection</h2>
+          <p>Fifteen years of groundbreaking animation, VFX and storytelling — released to the world under Creative Commons.</p>
+          <button class="button button-light" type="button" data-view-link="movies">Explore the collection <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="spotlight-stack" aria-hidden="true">
+          <div class="stack-card stack-back"></div>
+          <div class="stack-card stack-mid"></div>
+          <div class="stack-card stack-front">
+            <div class="stack-badge">CC</div>
+            <div class="stack-title">Open<br />Cinema</div>
+            <div class="stack-sub">EST. 2006</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rail-section" aria-labelledby="seriesTitle">
+        <div class="rail-head">
+          <div>
+            <h2 id="seriesTitle">Series &amp; anthologies</h2>
+            <p>Short-form stories worth a binge.</p>
+          </div>
+          <button class="text-button" type="button" data-view-link="series">View all series <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="rail-wrap">
+          <button class="rail-arrow rail-arrow-left" type="button" aria-label="Scroll left" data-rail="seriesRail" data-dir="-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>
+          </button>
+          <div class="rail" id="seriesRail" tabindex="0"></div>
+          <button class="rail-arrow rail-arrow-right" type="button" aria-label="Scroll right" data-rail="seriesRail" data-dir="1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="rail-section" aria-labelledby="newTitle">
+        <div class="rail-head">
+          <div>
+            <h2 id="newTitle">Newly restored</h2>
+            <p>Fresh transfers, carefully presented.</p>
+          </div>
+        </div>
+        <div class="rail-wrap">
+          <button class="rail-arrow rail-arrow-left" type="button" aria-label="Scroll left" data-rail="newRail" data-dir="-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>
+          </button>
+          <div class="rail" id="newRail" tabindex="0"></div>
+          <button class="rail-arrow rail-arrow-right" type="button" aria-label="Scroll right" data-rail="newRail" data-dir="1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <section class="browse-view" id="browseView" hidden aria-labelledby="browseTitle">
+      <div class="browse-head">
+        <div>
+          <span class="eyebrow"><span class="eyebrow-line"></span> The library</span>
+          <h1 id="browseTitle">Movies</h1>
+          <p id="browseSubtitle">Every title is free to stream, forever.</p>
+        </div>
+        <div class="filter-chips" id="filterChips" role="group" aria-label="Filter by genre"></div>
+      </div>
+      <div class="browse-grid" id="browseGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="empty-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5h14v11H5z"/><path d="m5 7.5 2.5-3h9l2.5 3"/><path d="m10 11 4.5 2.5L10 16z"/></svg>
+        </div>
+        <h2>Your list is waiting</h2>
+        <p>Save films and series with the + button and they will appear here.</p>
+        <button class="button button-primary" type="button" data-view-link="discover">Discover something new</button>
+      </div>
+    </section>
+
+    <section class="about-strip" aria-label="About OpenReel">
+      <div class="about-item">
+        <span class="about-number">01</span>
+        <h3>Open by design</h3>
+        <p>Every film is Creative Commons or public domain. Watch, share and remix without asking permission.</p>
+      </div>
+      <div class="about-item">
+        <span class="about-number">02</span>
+        <h3>No account, no ads</h3>
+        <p>The whole library is one click away. Your list and progress live only in your browser.</p>
+      </div>
+      <div class="about-item">
+        <span class="about-number">03</span>
+        <h3>Cinema, not content</h3>
+        <p>A small, deliberate collection presented the way films deserve to be seen.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <a class="brand footer-brand" href="#discover" data-view-link="discover">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" role="img"><path d="M11.8 8.7v14.6L24 16z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-word">OPEN<span>REEL</span></span>
+      </a>
+      <p class="footer-tagline">A free home for open cinema.<br />Built for people who love films.</p>
+      <div class="footer-links">
+        <a href="https://www.blender.org/" target="_blank" rel="noopener noreferrer">Blender Foundation</a>
+        <a href="https://archive.org/details/movies" target="_blank" rel="noopener noreferrer">Internet Archive</a>
+        <a href="https://creativecommons.org/" target="_blank" rel="noopener noreferrer">Creative Commons</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>OpenReel is a showcase for openly licensed cinema. All films remain the work of their creators and are streamed from the Internet Archive. No copyrighted films are hosted here.</p>
+      <p class="footer-small">Made for open culture · <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <nav class="mobile-nav" aria-label="Mobile primary">
+    <button class="mobile-link is-active" type="button" data-view-link="discover">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20h-5v-5H9v5H4z"/></svg>
+      <span>Discover</span>
+    </button>
+    <button class="mobile-link" type="button" data-view-link="movies">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 9h16M9 5l2 4M15 5l-2 4"/></svg>
+      <span>Movies</span>
+    </button>
+    <button class="mobile-link" type="button" data-action="open-search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+      <span>Search</span>
+    </button>
+    <button class="mobile-link" type="button" data-view-link="list">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h12v16l-6-3.6-6 3.6z"/></svg>
+      <span>My List</span>
+    </button>
+  </nav>
+
+  <div class="search-overlay" id="searchOverlay" hidden>
+    <div class="search-top">
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+        <input type="search" id="searchInput" placeholder="Search films, series, genres…" autocomplete="off" spellcheck="false" aria-label="Search films, series and genres" />
+        <button class="search-clear" type="button" data-action="clear-search" aria-label="Clear search">Clear</button>
+      </div>
+      <button class="search-close" type="button" data-action="close-search" aria-label="Close search">Done</button>
+    </div>
+    <div class="search-body">
+      <div class="search-hint" id="searchHint">
+        <span class="eyebrow"><span class="eyebrow-line"></span> Start typing</span>
+        <h2>Find your next<br /><em>favourite film.</em></h2>
+        <div class="search-suggestions" id="searchSuggestions"></div>
+      </div>
+      <div class="search-results" id="searchResults" hidden>
+        <p class="search-count" id="searchCount"></p>
+        <div class="browse-grid" id="searchGrid"></div>
+        <div class="empty-state compact" id="searchEmpty" hidden>
+          <h2>Nothing here yet</h2>
+          <p>Try another title or a genre like “animation”, “sci-fi” or “fantasy”.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-modal" id="detailModal" hidden>
+    <div class="modal-backdrop" data-action="close-detail"></div>
+    <article class="detail-sheet" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <button class="modal-close" type="button" data-action="close-detail" aria-label="Close details">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17"/></svg>
+      </button>
+      <div class="detail-hero">
+        <div class="detail-hero-art" id="detailArt"></div>
+        <div class="detail-hero-shade"></div>
+        <div class="detail-hero-content">
+          <div class="eyebrow" id="detailEyebrow"><span class="eyebrow-line"></span> Open film</div>
+          <h2 id="detailTitle">Sintel</h2>
+          <div class="hero-meta" id="detailMeta"></div>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div class="detail-main">
+          <div class="detail-actions">
+            <button class="button button-primary" type="button" id="detailPlay">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.8v12.4l10-6.2z" fill="currentColor" stroke="none"/></svg>
+              Play
+            </button>
+            <button class="round-button" type="button" id="detailList" aria-label="Add to my list">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5v13M5.5 12h13"/></svg>
+            </button>
+            <a class="button button-ghost button-small" id="detailSource" href="#" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8"/><path d="M19 13v5.5H5.5V5H11"/></svg>
+              Source
+            </a>
+          </div>
+          <p class="detail-synopsis" id="detailSynopsis"></p>
+          <div class="detail-facts" id="detailFacts"></div>
+          <div class="episodes" id="detailEpisodes" hidden>
+            <div class="episodes-head"><h3>Episodes</h3><span id="episodeCount"></span></div>
+            <div id="episodeList"></div>
+          </div>
+          <div class="detail-note">
+            <span class="license-dot"></span>
+            <span>Openly licensed. Streamed from the Internet Archive. If a stream stalls, you can open the original source.</span>
+          </div>
+        </div>
+        <aside class="detail-aside">
+          <h3>Details</h3>
+          <dl id="detailListFacts"></dl>
+          <div class="detail-aside-rule"></div>
+          <h3>More like this</h3>
+          <div class="detail-related" id="detailRelated"></div>
+        </aside>
+      </div>
+    </article>
+  </div>
+
+  <div class="player-modal" id="playerModal" hidden>
+    <div class="player-shell" id="playerShell">
+      <video id="video" playsinline preload="metadata"></video>
+      <div class="player-loading" id="playerLoading">
+        <div class="spinner"></div>
+        <span>Loading open film…</span>
+      </div>
+      <div class="player-top">
+        <button class="player-icon" type="button" data-action="close-player" aria-label="Close player">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>
+        </button>
+        <div class="player-heading">
+          <span class="player-now">Now playing</span>
+          <h2 id="playerTitle">Sintel</h2>
+        </div>
+        <span class="player-license" id="playerLicense">CC BY 3.0</span>
+      </div>
+      <div class="player-center">
+        <button class="player-big-play" type="button" data-action="toggle-play" aria-label="Play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.3v11.4L19 12z" fill="currentColor" stroke="none"/></svg>
+        </button>
+      </div>
+      <div class="player-bottom">
+        <div class="player-progress-wrap">
+          <input class="player-progress" id="playerProgress" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek" />
+          <div class="player-buffer" id="playerBuffer"></div>
+        </div>
+        <div class="player-controls">
+          <div class="player-controls-left">
+            <button class="player-icon" type="button" data-action="toggle-play" aria-label="Play or pause" id="playToggle">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.8v12.4l10-6.2z" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <button class="player-icon" type="button" data-action="skip-back" aria-label="Back 10 seconds">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7H4.8V2.8"/><path d="M4.9 7A8 8 0 1 1 4 13"/><text x="9.4" y="16.2" font-size="6.2" fill="currentColor" stroke="none" font-family="system-ui">10</text></svg>
+            </button>
+            <button class="player-icon" type="button" data-action="skip-forward" aria-label="Forward 10 seconds">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7h4.2V2.8"/><path d="M19.1 7A8 8 0 1 0 20 13"/><text x="9.4" y="16.2" font-size="6.2" fill="currentColor" stroke="none" font-family="system-ui">10</text></svg>
+            </button>
+            <div class="volume-control">
+              <button class="player-icon" type="button" data-action="toggle-mute" aria-label="Mute" id="muteToggle">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9.5h3l4-3.5v12l-4-3.5H5z"/><path d="M15.5 9.2a4 4 0 0 1 0 5.6M18 7a7 7 0 0 1 0 10"/></svg>
+              </button>
+              <input class="volume-slider" id="volumeSlider" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume" />
+            </div>
+            <span class="player-time"><span id="currentTime">0:00</span> <span class="time-sep">/</span> <span id="duration">0:00</span></span>
+          </div>
+          <div class="player-controls-right">
+            <span class="player-quality" id="playerQuality">1080p</span>
+            <button class="player-icon player-text-icon" type="button" data-action="toggle-captions" id="captionsToggle" aria-label="Toggle captions" aria-pressed="false">CC</button>
+            <button class="player-icon" type="button" data-action="toggle-fullscreen" aria-label="Fullscreen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <aside class="player-episodes" id="playerEpisodes" hidden>
+        <div class="player-episodes-head">
+          <span>Up next</span>
+          <strong id="playerSeriesName"></strong>
+        </div>
+        <div id="playerEpisodeList"></div>
+      </aside>
+      <div class="player-notice" id="playerNotice" hidden></div>
+      <div class="player-error" id="playerError" hidden>
+        <div class="player-error-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.2M12 16.4v.2"/></svg>
+        </div>
+        <h3>Stream unavailable</h3>
+        <p>The open archive did not answer. You can retry, play a short offline preview, or open the original source.</p>
+        <div class="player-error-actions">
+          <button class="button button-primary button-small" type="button" data-action="retry-stream">Try again</button>
+          <button class="button button-ghost button-small" type="button" data-action="play-preview">Offline preview</button>
+          <a class="button button-ghost button-small" id="playerSourceLink" href="#" target="_blank" rel="noopener noreferrer">Internet Archive</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
