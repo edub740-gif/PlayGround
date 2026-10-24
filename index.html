@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="description" content="A free streaming concept for open movies and TV. No subscription, no credit card.">
+<title>tubi — Free Movies &amp; TV Shows</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23b58cff'/%3E%3Cstop offset='.5' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%2308080d'/%3E%3Cpath d='M14 18h7v9.5h3.2V18h7v9.5H34V18h7v17.5c0 6.9-4.9 11.5-13.5 11.5S14 42.4 14 35.5V18Z' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/inter-700.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/inter-400.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg class="icon-sprite" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.14v13.72a1 1 0 0 0 1.53.85l10.28-6.86a1 1 0 0 0 0-1.7L9.53 4.29A1 1 0 0 0 8 5.14Z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 4h3.5v16H7zM13.5 4H17v16h-3.5z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M11 4h2v7h7v2h-7v7h-2v-7H4v-2h7V4Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m9.55 17.3-4.6-4.6 1.4-1.4 3.2 3.19 7.79-7.8 1.41 1.42L9.55 17.3Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><path d="M11 10h2v7h-2zm0-3h2v2h-2z"/><path fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10.5 3a7.5 7.5 0 1 0 4.55 13.46l4.24 4.25 1.42-1.42-4.25-4.24A7.5 7.5 0 0 0 10.5 3Zm-5.5 7.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m14.7 5.3-6.7 6.7 6.7 6.7 1.4-1.4-5.3-5.3 5.3-5.3-1.4-1.4Z"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9.3 5.3-1.4 1.4 5.3 5.3-5.3 5.3 1.4 1.4 6.7-6.7-6.7-6.7Z"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6.4 5 5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6L6.4 19 5 17.6l5.6-5.6L5 6.4 6.4 5Z"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4Zm-2.5-8v2.1a6.5 6.5 0 0 1 0 11.8V20a8.5 8.5 0 0 0 0-16Z"/></symbol>
+  <symbol id="i-muted" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Zm12.6 1.3-1.4 1.4 1.3 1.3-1.3 1.3 1.4 1.4 1.3-1.3 1.3 1.3 1.4-1.4-1.3-1.3 1.3-1.3-1.4-1.4-1.3 1.3-1.3-1.3Z"/></symbol>
+  <symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M4 4h6v2H6v4H4V4Zm10 0h6v6h-2V6h-4V4ZM4 14h2v4h4v2H4v-6Zm14 0h2v6h-6v-2h4v-4Z"/></symbol>
+  <symbol id="i-exit-fullscreen" viewBox="0 0 24 24"><path d="M9 4h2v7H4V9h5V4Zm4 0h2v5h5v2h-7V4ZM4 13h7v7H9v-5H4v-2Zm9 0h7v2h-5v5h-2v-7Z"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="m10.7 5.3-6.7 6.7 6.7 6.7 1.4-1.4L6.8 12l5.3-5.3-1.4-1.4Z"/><path d="M20 11H7v2h13v-2Z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m12 3 9 8h-2.5v9H14v-6h-4v6H5.5v-9H3l9-8Z"/></symbol>
+  <symbol id="i-movie" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 4h18v16H3V4Zm2 2v2h2V6H5Zm4 0v2h2V6H9Zm4 0v2h2V6h-2Zm4 0v2h2V6h-2ZM5 10v8h14v-8h-3v2h-2v-2h-4v2H8v-2H5Zm5 3h4v2h-4v-2Z"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><path d="M8 3h8l1.5 2H21v15H3V5h3.5L8 3Zm1.2 2h5.6l1.5 2H6.7l1.5-2ZM5 7v11h14V7H5Zm3 9h8v-2H8v2Z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M4 5h2v2H4V5Zm4 0h12v2H8V5ZM4 11h2v2H4v-2Zm4 0h12v2H8v-2ZM4 17h2v2H4v-2Zm4 0h12v2H8v-2Z"/></symbol>
+  <symbol id="i-live" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.8 4.2 12 8.4l4.2-4.2 1.4 1.4-3.4 3.4H18a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3h3.8L6.4 5.6l1.4-1.4ZM6 10a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H6Zm4 2.5 4 2.5-4 2.5v-5Z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.5 14 9l6.5 2-6.5 2-2 6.5-2-6.5L3.5 11 10 9l2-6.5Z"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m12 4 7 7-1.4 1.4L13 7.8V20h-2V7.8l-4.6 4.6L5 11l7-7Z"/></symbol>
+</svg>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand" href="#home" data-view-link="home" aria-label="tubi home">
+      <span class="brand-word">tubi</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <button class="nav-link is-active" data-view-link="home">Home</button>
+      <button class="nav-link" data-view-link="movies">Movies</button>
+      <button class="nav-link" data-view-link="shows">TV Shows</button>
+      <button class="nav-link" data-view-link="live">Live TV <span class="live-dot" aria-hidden="true"></span></button>
+      <button class="nav-link" data-view-link="mylist">My List</button>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn search-trigger" id="searchBtn" aria-label="Search">
+        <svg aria-hidden="true"><use href="#i-search"/></svg>
+      </button>
+      <button class="avatar-btn" id="profileBtn" aria-label="Profile">G</button>
+      <button class="signin-btn" id="signinBtn">Sign In</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="genre-strip" id="genreStrip" aria-label="Browse by genre">
+    <button class="genre-pill is-active" data-genre="all">All</button>
+    <button class="genre-pill" data-genre="Action">Action</button>
+    <button class="genre-pill" data-genre="Animation">Animation</button>
+    <button class="genre-pill" data-genre="Comedy">Comedy</button>
+    <button class="genre-pill" data-genre="Fantasy">Fantasy</button>
+    <button class="genre-pill" data-genre="Horror">Horror</button>
+    <button class="genre-pill" data-genre="Sci-Fi">Sci-Fi</button>
+    <button class="genre-pill" data-genre="Kids">Kids</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="view is-active" id="homeView" data-view="home">
+    <section class="hero" id="hero" aria-label="Featured title">
+      <div class="hero-media">
+        <img id="heroImage" src="assets/img/hero-sintel.jpg" alt="" fetchpriority="high">
+        <video id="heroVideo" class="hero-video" muted loop playsinline preload="none" poster="assets/img/hero-bbb.jpg" aria-hidden="true">
+          <source src="assets/video/Big_Buck_Bunny_720_10s_2MB.webm" type="video/webm">
+        </video>
+      </div>
+      <div class="hero-shade"></div>
+      <div class="hero-grain"></div>
+      <div class="hero-content" id="heroContent">
+        <div class="hero-eyebrow"><span class="eyebrow-dot"></span> Featured tonight</div>
+        <h1 class="hero-title" id="heroTitle">Sintel</h1>
+        <div class="hero-meta" id="heroMeta"></div>
+        <p class="hero-desc" id="heroDesc"></p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-play" id="heroPlay">
+            <svg aria-hidden="true"><use href="#i-play"/></svg> Play
+          </button>
+          <button class="btn btn-glass" id="heroInfo">
+            <svg aria-hidden="true"><use href="#i-info"/></svg> More Info
+          </button>
+          <button class="btn-round" id="heroSave" aria-label="Add to My List">
+            <svg aria-hidden="true"><use href="#i-plus"/></svg>
+          </button>
+        </div>
+        <div class="hero-footnote" id="heroFootnote">Free with ads · Always</div>
+      </div>
+      <div class="hero-side">
+        <div class="hero-rank"><span>#1</span><small>in Movies Today</small></div>
+      </div>
+      <div class="hero-pager" id="heroPager" aria-label="Choose featured title"></div>
+    </section>
+
+    <div class="value-strip">
+      <span><b>100%</b> free</span>
+      <span class="value-sep" aria-hidden="true"></span>
+      <span>No subscription</span>
+      <span class="value-sep" aria-hidden="true"></span>
+      <span>No credit card</span>
+      <span class="value-sep" aria-hidden="true"></span>
+      <span>Thousands of hours of open cinema</span>
+    </div>
+
+    <div class="rows" id="rows"></div>
+
+    <section class="cta-panel">
+      <div class="cta-art" aria-hidden="true"></div>
+      <div class="cta-copy">
+        <span class="section-kicker">Always-on entertainment</span>
+        <h2>Movies, shows, and live channels.<br>Zero dollars a month.</h2>
+        <p>Stream public-domain classics, award-winning open movies, and hand-picked collections — curated for the way you watch.</p>
+        <div class="cta-actions">
+          <button class="btn btn-primary" data-view-link="movies">Browse movies</button>
+          <button class="btn btn-glass" data-view-link="live">Watch live TV</button>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="view" id="browseView" data-view="browse" hidden>
+    <div class="browse-head">
+      <div>
+        <button class="back-link" data-view-link="home"><svg aria-hidden="true"><use href="#i-back"/></svg> Home</button>
+        <h1 id="browseTitle">Movies</h1>
+        <p id="browseSubtitle">Every title, free to watch.</p>
+      </div>
+      <div class="browse-filters" id="browseFilters"></div>
+    </div>
+    <div class="title-grid" id="browseGrid"></div>
+    <div class="empty-state" id="browseEmpty" hidden>
+      <svg aria-hidden="true"><use href="#i-spark"/></svg>
+      <h3>Nothing here yet</h3>
+      <p>Save something from the home page and it will show up here.</p>
+      <button class="btn btn-primary" data-view-link="home">Find something to watch</button>
+    </div>
+  </section>
+
+  <section class="view" id="liveView" data-view="live" hidden>
+    <div class="browse-head">
+      <div>
+        <button class="back-link" data-view-link="home"><svg aria-hidden="true"><use href="#i-back"/></svg> Home</button>
+        <h1>Live TV</h1>
+        <p>Curated channels playing around the clock. Pick a channel and drop in.</p>
+      </div>
+      <div class="live-status"><span class="live-dot"></span> 5 channels on air</div>
+    </div>
+    <div class="live-grid" id="liveGrid"></div>
+    <div class="schedule-panel">
+      <div class="section-head"><h2>On now</h2><span class="section-note">All times local</span></div>
+      <div class="schedule-list" id="scheduleList"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <a class="brand brand-small" href="#home" data-view-link="home"><span class="brand-word">tubi</span></a>
+      <nav class="footer-nav" aria-label="Footer">
+        <button data-view-link="home">Home</button>
+        <button data-view-link="movies">Movies</button>
+        <button data-view-link="shows">TV Shows</button>
+        <button data-view-link="live">Live TV</button>
+        <button id="sourcesBtn">Sources &amp; licenses</button>
+      </nav>
+    </div>
+    <p class="footer-note">An unofficial concept app inspired by free, ad-supported streaming. Every title is public domain or openly licensed and streamed from the Internet Archive. This project is not affiliated with Tubi, Blender, or the Internet Archive.</p>
+    <p class="footer-copy">Made for the open web · <span id="footerYear"></span></p>
+  </footer>
+</main>
+
+<nav class="mobile-nav" aria-label="Mobile">
+  <button class="mobile-nav-link is-active" data-view-link="home"><svg aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></button>
+  <button class="mobile-nav-link" data-view-link="movies"><svg aria-hidden="true"><use href="#i-movie"/></svg><span>Movies</span></button>
+  <button class="mobile-nav-link" data-view-link="shows"><svg aria-hidden="true"><use href="#i-tv"/></svg><span>TV Shows</span></button>
+  <button class="mobile-nav-link" data-view-link="live"><svg aria-hidden="true"><use href="#i-live"/></svg><span>Live TV</span></button>
+  <button class="mobile-nav-link" data-view-link="mylist"><svg aria-hidden="true"><use href="#i-list"/></svg><span>My List</span></button>
+</nav>
+
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchLabel" hidden>
+  <div class="search-panel">
+    <div class="search-bar">
+      <svg class="search-bar-icon" aria-hidden="true"><use href="#i-search"/></svg>
+      <label class="sr-only" for="searchInput" id="searchLabel">Search movies and TV shows</label>
+      <input id="searchInput" type="search" autocomplete="off" placeholder="Search movies, shows, genres…">
+      <button class="search-close" id="searchClose" aria-label="Close search"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="search-body">
+      <div class="search-suggestions" id="searchSuggestions">
+        <span class="search-label">Trending searches</span>
+        <div class="chip-row">
+          <button class="search-chip" data-search="Sintel">Sintel</button>
+          <button class="search-chip" data-search="Tears of Steel">Tears of Steel</button>
+          <button class="search-chip" data-search="Animation">Animation</button>
+          <button class="search-chip" data-search="Caminandes">Caminandes</button>
+          <button class="search-chip" data-search="Sci-Fi">Sci-Fi</button>
+        </div>
+      </div>
+      <div class="search-results-head" id="searchResultsHead" hidden>
+        <span class="search-label" id="searchResultsLabel">Results</span>
+        <span class="search-count" id="searchCount"></span>
+      </div>
+      <div class="title-grid search-grid" id="searchResults"></div>
+      <div class="empty-state search-empty" id="searchEmpty" hidden>
+        <svg aria-hidden="true"><use href="#i-search"/></svg>
+        <h3>No matches</h3>
+        <p>Try a title, genre, or year.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<dialog class="detail-dialog" id="detailDialog" aria-labelledby="detailTitle">
+  <div class="detail-shell">
+    <button class="detail-close" id="detailClose" aria-label="Close details"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    <div class="detail-hero">
+      <img id="detailBackdrop" alt="">
+      <div class="detail-shade"></div>
+      <div class="detail-copy">
+        <div class="hero-eyebrow"><span class="eyebrow-dot"></span> <span id="detailKicker">Free to watch</span></div>
+        <h2 id="detailTitle">Title</h2>
+        <div class="hero-meta" id="detailMeta"></div>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="detailPlay"><svg aria-hidden="true"><use href="#i-play"/></svg> Play</button>
+          <button class="btn btn-glass" id="detailSave"><svg aria-hidden="true"><use href="#i-plus"/></svg> My List</button>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="detail-main">
+        <p class="detail-desc" id="detailDesc"></p>
+        <div class="detail-tags" id="detailTags"></div>
+        <div class="source-card" id="sourceCard"></div>
+        <div class="episode-block" id="episodeBlock" hidden>
+          <div class="section-head"><h3>Episodes</h3><span class="section-note" id="episodeCount"></span></div>
+          <div class="episode-list" id="episodeList"></div>
+        </div>
+      </div>
+      <aside class="detail-aside">
+        <div class="aside-block">
+          <h3>Details</h3>
+          <dl id="detailFacts"></dl>
+        </div>
+        <div class="aside-block">
+          <h3>Share</h3>
+          <button class="share-btn" id="shareBtn"><svg aria-hidden="true"><use href="#i-spark"/></svg> Copy link</button>
+        </div>
+      </aside>
+    </div>
+    <div class="detail-more">
+      <div class="section-head"><h2>More like this</h2></div>
+      <div class="title-row small-row" id="detailMore"></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sources-dialog" id="sourcesDialog" aria-labelledby="sourcesTitle">
+  <div class="sources-shell">
+    <button class="detail-close" id="sourcesClose" aria-label="Close sources"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    <span class="section-kicker">Attribution</span>
+    <h2 id="sourcesTitle">Video sources &amp; licenses</h2>
+    <p class="sources-intro">This concept streams directly from the Internet Archive. Each title below links to its item page and license. No full-length video files are re-hosted here; short preview clips are bundled for testing.</p>
+    <div class="sources-list" id="sourcesList"></div>
+    <div class="sources-note">
+      <strong>Licenses.</strong> Blender open movies are released under Creative Commons Attribution licenses. Some catalogue metadata on the Internet Archive is incomplete; the linked item page is the definitive source. This is a demonstration project and is not affiliated with Tubi.
+    </div>
+  </div>
+</dialog>
+
+<div class="player" id="player" hidden aria-hidden="true">
+  <video id="video" playsinline preload="metadata"></video>
+  <div class="player-top">
+    <button class="player-back" id="playerBack" aria-label="Back"><svg aria-hidden="true"><use href="#i-back"/></svg></button>
+    <div class="player-title-wrap">
+      <span class="player-kicker" id="playerKicker">Now playing</span>
+      <h2 id="playerTitle">Title</h2>
+    </div>
+    <div class="player-badges"><span class="ad-badge">FREE WITH ADS</span></div>
+  </div>
+  <button class="player-big-play" id="playerBigPlay" aria-label="Play">
+    <svg aria-hidden="true"><use href="#i-play"/></svg>
+  </button>
+  <div class="player-error" id="playerError" hidden>
+    <svg aria-hidden="true"><use href="#i-info"/></svg>
+    <h3 id="playerErrorTitle">This source did not load</h3>
+    <p id="playerErrorText"></p>
+    <div class="player-error-actions">
+      <button class="btn btn-primary" id="playerPreviewBtn" hidden>Play preview</button>
+      <a class="btn btn-glass" id="playerSourceLink" href="#" target="_blank" rel="noopener">Open source</a>
+    </div>
+  </div>
+  <div class="player-controls" id="playerControls">
+    <div class="progress-wrap">
+      <div class="progress-track" id="progressTrack" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="progress-buffer" id="progressBuffer"></div>
+        <div class="progress-played" id="progressPlayed"></div>
+        <div class="progress-knob" id="progressKnob"></div>
+      </div>
+    </div>
+    <div class="control-row">
+      <button class="player-control" id="playToggle" aria-label="Play"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
+      <button class="player-control" id="skipBack" aria-label="Back 10 seconds"><span class="skip-text">10</span><svg aria-hidden="true"><use href="#i-chevron-left"/></svg></button>
+      <button class="player-control" id="skipForward" aria-label="Forward 10 seconds"><svg aria-hidden="true"><use href="#i-chevron-right"/></svg><span class="skip-text">10</span></button>
+      <div class="time-readout"><span id="currentTime">0:00</span><span class="time-divider">/</span><span id="durationTime">0:00</span></div>
+      <div class="spacer"></div>
+      <button class="player-control" id="muteToggle" aria-label="Mute"><svg aria-hidden="true"><use href="#i-volume"/></svg></button>
+      <button class="player-control" id="fullscreenToggle" aria-label="Fullscreen"><svg aria-hidden="true"><use href="#i-fullscreen"/></svg></button>
+    </div>
+  </div>
+  <div class="player-status" id="playerStatus"></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

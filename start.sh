@@ -10,7 +10,8 @@ METADATA_DIR="${OPENCODE_WEB_DIR:-$PROJECT_DIR/.omgithub-runtime}"
 /usr/bin/time -p mkdir -p "$METADATA_DIR"
 /usr/bin/time -p rm -rf "$DIST"
 /usr/bin/time -p mkdir -p "$DIST"
-/usr/bin/time -p cp -R "$PROJECT_DIR/site/." "$DIST/"
+/usr/bin/time -p cp "$PROJECT_DIR/index.html" "$PROJECT_DIR/styles.css" "$PROJECT_DIR/app.js" "$PROJECT_DIR/data.js" "$DIST/"
+/usr/bin/time -p cp -R "$PROJECT_DIR/assets" "$DIST/assets"
 
 /usr/bin/time -p node -e '
   const fs = require("node:fs");
